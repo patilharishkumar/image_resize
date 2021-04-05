@@ -1,10 +1,12 @@
 ## How to Run Tests and Use
-Flask async REST service using for image resizing
+async REST service using for image resizing
 To build and start the project, from the project root:
-
 ```bash
 cd path/to/dir
 $ docker-compose up
+
+Local build
+
 $ docker build -t image_resize:latest . # build the Docker image from the Dockerfile
 $ docker-compose up -d # start the worker, redis, and api containers in the background
 $ docker-compose logs -f # tail the logs
