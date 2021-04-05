@@ -8,7 +8,7 @@ class TestResizeMethod(BaseTestCase):
         file = {'width': 100,
                 'height': 100,
                 'file': open(current_app.config['TEST_IMAGE'], 'rb')}
-        response = self.client.post('/operation/resize',
+        response = self.client.post('/api/v1/images/resize',
                                     content_type='multipart/form-data',
                                     data=file)
         self.assertEqual(202, response.status_code)
@@ -22,7 +22,7 @@ class TestResizeMethod(BaseTestCase):
         file = {'width': 0,
                 'height': 0,
                 'file': open(current_app.config['TEST_IMAGE'], 'rb')}
-        response = self.client.post('/operation/resize',
+        response = self.client.post('/images/resize',
                                     content_type='multipart/form-data',
                                     data=file)
         self.assertEqual(422, response.status_code)
@@ -31,7 +31,7 @@ class TestResizeMethod(BaseTestCase):
         file = {'width': 10,
                 'height': 10,
                 'file': ''}
-        response = self.client.post('/operation/resize',
+        response = self.client.post('/images/resize',
                                     content_type='multipart/form-data',
                                     data=file)
         self.assertEqual(422, response.status_code)

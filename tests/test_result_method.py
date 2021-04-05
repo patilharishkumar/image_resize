@@ -10,7 +10,7 @@ class TestResultMethod(BaseTestCase):
         file = {'width': 1000,
                 'height': 1000,
                 'file': open('test_images/test.jpg', 'rb')}
-        response = self.client.post('/operation/resize',
+        response = self.client.post('/api/v1/images/resize',
                                     content_type='multipart/form-data',
                                     data=file)
         self.assertEqual(202, response.status_code)
@@ -19,7 +19,7 @@ class TestResultMethod(BaseTestCase):
 
     def test_result_method(self):
         time.sleep(.5)
-        response = self.client.get(f'/operation/result/{self.task_id}')
+        response = self.client.get(f'/api/v1/images/result/{self.task_id}')
         self.assert200(response)
         data = response.get_data()
         with open('test_images/response.jpg', 'wb') as file:

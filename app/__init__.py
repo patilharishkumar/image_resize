@@ -47,7 +47,7 @@ def create_app(config_name: str = 'app.config.DevelopmentConfig') -> Flask:
     )
 
     from app import views
-    flask.register_blueprint(views.operation_blueprint)
+    flask.register_blueprint(views.images_blueprint)
     flask.register_blueprint(views.status_blueprint)
 
     flask.logger.info('Views blueprints successfully registered')

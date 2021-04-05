@@ -12,7 +12,7 @@ class TestStatusMethod(BaseTestCase):
         file = {'width': 100,
                 'height': 100,
                 'file': open(current_app.config['TEST_IMAGE'], 'rb')}
-        response = self.client.post('/operation/resize',
+        response = self.client.post('/api/v1/images/resize',
                                     content_type='multipart/form-data',
                                     data=file)
         self.assertEqual(202, response.status_code)

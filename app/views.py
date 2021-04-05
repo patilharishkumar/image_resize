@@ -15,11 +15,11 @@ from app.utils import (
     create_error_response, allowed_extension, create_response, size_valid
 )
 
-operation_blueprint = Blueprint('operation', __name__, url_prefix='/operation')
-status_blueprint = Blueprint('status', __name__, url_prefix='/status')
+images_blueprint = Blueprint('images', __name__, url_prefix='/api/v1/images')
+status_blueprint = Blueprint('status', __name__, url_prefix='/api/v1/status')
 
 
-@operation_blueprint.route('/resize', methods=['POST'])
+@images_blueprint.route('/resize', methods=['POST'])
 def process() -> Response:
     """
     Takes file with multipart/form-data format and creates async task to
@@ -80,7 +80,7 @@ def process() -> Response:
         return create_error_response(422, 'Invalid extension')
 
 
-@operation_blueprint.route('/result/<uuid:task_id>', methods=['GET'])
+@images_blueprint.route('/result/<uuid:task_id>', methods=['GET'])
 def result(task_id: UUID) -> Response:
     """
     Accepts the task ID and returns the result. The result does not exist if
